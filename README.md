@@ -16,7 +16,7 @@ The following things on your Linux runner are assumed to be installed - if not t
 
 <!-- start usage -->
 ```yaml
-- uses: grandcentrix/grandcentrix-actions-validator@v1.0.0
+- uses: grandcentrix/grandcentrix-actions-validator@v0.1.4
   with:
     # Required. Path to workflow file to use
     file: ''
@@ -67,14 +67,14 @@ jobs:
           node-version: '12.x'
       - name: Check PR workflow
         id: pr
-        uses: grandcentrix/grandcentrix-actions-validator@v1.0.0
+        uses: grandcentrix/grandcentrix-actions-validator@v0.1.4
         with:
           file: ${{ github.workspace }}/.github/workflows/pr.yml
           vars: github.actor=testuser secrets.GITHUB_TOKEN=token github.event_name=push
         continue-on-error: true
       - name: Check Release workflow
         id: release
-        uses: grandcentrix/grandcentrix-actions-validator@v1.0.0
+        uses: grandcentrix/grandcentrix-actions-validator@v0.1.4
         with:
           file: ${{ github.workspace }}/.github/workflows/release.yml
           vars: github.actor=testuser secrets.GITHUB_TOKEN=token github.event_name=push
