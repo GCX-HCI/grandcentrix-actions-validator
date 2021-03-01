@@ -51,7 +51,6 @@ on:
   push:
     paths:
       - '.github/workflows/**'
-      - '.github/actions/**'
 
 jobs:
   runAction:
