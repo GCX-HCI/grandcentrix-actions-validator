@@ -68,7 +68,6 @@ jobs:
         uses: grandcentrix/grandcentrix-actions-validator@v1.0.0
         with:
           file: ${{ github.workspace }}/.github/workflows/pr.yml
-          config: ${{ github.workspace }}/.github/workflows/config.toml
           vars: github.actor=testuser secrets.GITHUB_TOKEN=token github.event_name=push
         continue-on-error: true
       - name: Check Release workflow
@@ -76,7 +75,6 @@ jobs:
         uses: grandcentrix/grandcentrix-actions-validator@v1.0.0
         with:
           file: ${{ github.workspace }}/.github/workflows/release.yml
-          config: ${{ github.workspace }}/.github/workflows/config.toml
           vars: github.actor=testuser secrets.GITHUB_TOKEN=token github.event_name=push
         continue-on-error: true
       - name: Check results
