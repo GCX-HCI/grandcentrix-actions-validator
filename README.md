@@ -1,6 +1,6 @@
 # grandcentrix Actions Validator
 
-This action is built around https://github.com/grandcentrix/grandcentrix-actions-simulator. It allows you to check your workflow files e.g. when you edit them in a Pull Request. It checks for correct syntax and even simulates the run. Also, it is able to do a real run-through of your script if you want it to.
+This action is built around https://github.com/grandcentrix/grandcentrix-actions-simulator. It allows you to check your workflow files e.g. when you edit them in a Pull Request. It checks for correct syntax and even simulates the run. Also, it is able to do a real run-through of your workflow if you want it to.
 
 # Usage
 
