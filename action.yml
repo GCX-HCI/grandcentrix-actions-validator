@@ -1,5 +1,9 @@
-name: 'Actions Simulator'
-description: 'Simple way to locally run (i.e. simulate the run of) GitHub workflow files'
+name: 'Actions Validator'
+author: 'grandcentrix'
+description: 'Simple way to validate and run (i.e. simulate the run of) GitHub Actions Workflow files'
+branding:
+  icon: 'eye'  
+  color: 'white'
 inputs:
   file:
     description: 'Workflow file to use'
@@ -35,4 +39,3 @@ runs:
 
         ./acsim-ubuntu-latest $dry_run $fail_fast $prepopulate $config ${{ inputs.file }} ${{ inputs.vars }}
       shell: bash
-      working-directory: ${{ github.action_path }}
