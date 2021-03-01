@@ -30,7 +30,6 @@ runs:
   using: "composite"
   steps:
     - name: Run Actions Simulator
-      id: run
       run: |
         config="$( [[ '${{ inputs.config }}' != '' ]] && echo '--config ${{ inputs.config }}' || echo '' )"
         dry_run="$( [[ ${{ inputs.dry_run }} == true ]] && echo '-d' || echo '' )"
