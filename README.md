@@ -24,6 +24,11 @@ GitHub Action for https://github.com/grandcentrix/grandcentrix-actions-simulator
     # Default: 'false'
     fail_fast: ''
     
+    # Optional. Prepopulate some of the default vars and environment vars - you can still override them
+    #
+    # Default: 'true'
+    prepopulate: ''
+    
     # Optional. Sets an variable - e.g. foo=bar, separated by whitespace
     vars: ''
 ```
