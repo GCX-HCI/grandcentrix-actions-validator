@@ -11,6 +11,7 @@ inputs:
   config:
     description: 'Config file to override defaults'
     required: false
+    default: ""
   dry_run:
     description: 'In dry run no shell scripts are executed'
     required: false
