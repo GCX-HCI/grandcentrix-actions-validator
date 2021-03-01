@@ -6,7 +6,9 @@ This action is built around https://github.com/grandcentrix/grandcentrix-actions
 
 ## Prerequisites 
 
-The following things on your GitHub runner are assumed to be installed - if not this might crash ingracefully
+Currently this Action only runs on Linux runners (e.g. "ubuntu-latest").
+
+The following things on your Linux runner are assumed to be installed - if not this might crash ingracefully
 - git
 - NodeJS 12 or better
 
