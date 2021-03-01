@@ -33,10 +33,10 @@ runs:
     - name: Run Actions Simulator
       id: run
       run: |
-        config="$( [[ ${{ inputs.config }} != '' ]] && echo '--config ${{ inputs.config }}' || echo '' )"
-        dry_run="$( [[ ${{ inputs.dry_run }} == 'true' ]] && echo '-d' || echo '' )"
-        fail_fast="$( [[ ${{ inputs.fail_fast }} == 'true' ]] && echo '-f' || echo '' )"
-        prepopulate="$( [[ ${{ inputs.prepopulate }} == 'true' ]] && echo '-p' || echo '' )"
+        config="$( [[ ${{ inputs.config }} != '' ]] && (echo '--config ${{ inputs.config }}') || (echo '') )"
+        dry_run="$( [[ ${{ inputs.dry_run }} == 'true' ]] && (echo '-d') || (echo '') )"
+        fail_fast="$( [[ ${{ inputs.fail_fast }} == 'true' ]] && (echo '-f') || (echo '') )"
+        prepopulate="$( [[ ${{ inputs.prepopulate }} == 'true' ]] && (echo '-p') || (echo '') )"
 
         ./acsim-ubuntu-latest $dry_run $fail_fast $prepopulate $config ${{ inputs.file }} ${{ inputs.vars }}
       shell: bash
