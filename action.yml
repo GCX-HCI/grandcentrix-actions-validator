@@ -14,7 +14,7 @@ inputs:
   dry_run:
     description: 'In dry run no shell scripts are executed'
     required: false
-    default: false
+    default: true
   fail_fast:
     description: 'Fail as soon as there is an unknown variable or undeclared action input is used'
     required: false
