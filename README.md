@@ -26,7 +26,7 @@ The following things on your Linux runner are assumed to be installed - if not t
 
     # Optional. In dry run no shell scripts are executed
     #
-    # Default: 'false'
+    # Default: 'true'
     dry_run: ''
 
     # Optional. Fail as soon as there is an unknown variable or undeclared action input is used
