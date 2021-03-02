@@ -36,6 +36,5 @@ runs:
         fail_fast="$( [[ ${{ inputs.fail_fast }} == true ]] && echo '-f' || echo '' )"
         prepopulate="$( [[ ${{ inputs.prepopulate }} == true ]] && echo '-p' || echo '' )"
 
-        ./acsim-ubuntu-latest $dry_run $fail_fast $prepopulate $config ${{ inputs.file }} ${{ inputs.vars }}
+        ${{ github.action_path }}/acsim-ubuntu-latest $dry_run $fail_fast $prepopulate $config ${{ inputs.file }} ${{ inputs.vars }}
       shell: bash
-      working-directory: ${{ github.action_path }}
