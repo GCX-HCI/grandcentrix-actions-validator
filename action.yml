@@ -1,4 +1,4 @@
-name: 'Actions Validator'
+name: 'grandcentrix Actions Validator'
 author: 'grandcentrix'
 description: 'Simple way to validate and run (i.e. simulate the run of) GitHub Actions Workflow files'
 branding:
