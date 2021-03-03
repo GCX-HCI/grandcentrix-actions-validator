@@ -29,12 +29,23 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Run Actions Simulator
+    - name: Prepare configuration
+      id: config
       run: |
         config="$( [[ '${{ inputs.config }}' != '' ]] && echo '--config ${{ inputs.config }}' || echo '' )"
         dry_run="$( [[ ${{ inputs.dry_run }} == true ]] && echo '-d' || echo '' )"
         fail_fast="$( [[ ${{ inputs.fail_fast }} == true ]] && echo '-f' || echo '' )"
         prepopulate="$( [[ ${{ inputs.prepopulate }} == true ]] && echo '-p' || echo '' )"
-
-        ${{ github.action_path }}/acsim-ubuntu-latest $dry_run $fail_fast $prepopulate $config ${{ inputs.file }} ${{ inputs.vars }}
+        parameters="$dry_run $fail_fast $prepopulate $config ${{ inputs.file }} ${{ inputs.vars }}"
+        echo "::set-output name=parameters::$parameters"
+      shell: bash
+    - name: Run Actions Simulator for Linux
+      if: runner.os == 'Linux'
+      run: |
+        ${{ github.action_path }}/acsim-ubuntu-latest ${{ steps.config.outputs.parameters }}
+      shell: bash
+    - name: Run Actions Simulator for macOS
+      if: runner.os == 'macOS'
+      run: |
+        ${{ github.action_path }}/acsim-macos-latest ${{ steps.config.outputs.parameters }}
       shell: bash
