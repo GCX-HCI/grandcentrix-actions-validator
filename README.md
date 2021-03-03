@@ -6,7 +6,7 @@ This action is built around https://github.com/grandcentrix/grandcentrix-actions
 
 ## Prerequisites 
 
-Currently this Action only runs on Linux runners (e.g. "ubuntu-latest").
+This Action runs on Linux (e.g. "ubuntu-latest") and macOS runners (e.g. "macos-latest").
 
 The following things on your Linux runner are assumed to be installed - if not this might crash ingracefully
 - git
@@ -16,7 +16,7 @@ The following things on your Linux runner are assumed to be installed - if not t
 
 <!-- start usage -->
 ```yaml
-- uses: grandcentrix/grandcentrix-actions-validator@v0.1.4
+- uses: grandcentrix/grandcentrix-actions-validator@v0.1.5
   with:
     # Required. Path to workflow file to use
     file: ''
@@ -67,14 +67,14 @@ jobs:
           node-version: '12.x'
       - name: Check PR workflow
         id: pr
-        uses: grandcentrix/grandcentrix-actions-validator@v0.1.4
+        uses: grandcentrix/grandcentrix-actions-validator@v0.1.5
         with:
           file: ${{ github.workspace }}/.github/workflows/pr.yml
           vars: github.actor=testuser secrets.GITHUB_TOKEN=token github.event_name=push
         continue-on-error: true
       - name: Check Release workflow
         id: release
-        uses: grandcentrix/grandcentrix-actions-validator@v0.1.4
+        uses: grandcentrix/grandcentrix-actions-validator@v0.1.5
         with:
           file: ${{ github.workspace }}/.github/workflows/release.yml
           vars: github.actor=testuser secrets.GITHUB_TOKEN=token github.event_name=push
