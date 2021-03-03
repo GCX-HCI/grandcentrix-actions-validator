@@ -8,7 +8,7 @@ This action is built around https://github.com/grandcentrix/grandcentrix-actions
 
 This Action runs on Linux (e.g. "ubuntu-latest") and macOS runners (e.g. "macos-latest").
 
-The following things on your Linux runner are assumed to be installed - if not this might crash ingracefully
+The following things on your runner are assumed to be installed - if not this might crash ingracefully
 - git
 - NodeJS 12 or better
 
