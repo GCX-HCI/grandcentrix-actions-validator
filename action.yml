@@ -14,15 +14,15 @@ inputs:
   dry_run:
     description: 'In dry run no shell scripts are executed'
     required: false
-    default: true
+    default: 'true'
   fail_fast:
     description: 'Fail as soon as there is an unknown variable or undeclared action input is used'
     required: false
-    default: false
+    default: 'false'
   prepopulate:
     description: 'Prepopulate some of the default vars and environment vars - you can still override them'
     required: false
-    default: true
+    default: 'true'
   vars:
     description: 'Sets an variable - e.g. foo=bar, separated by whitespace'
     required: false
@@ -38,14 +38,10 @@ runs:
         prepopulate="$( [[ ${{ inputs.prepopulate }} == true ]] && echo '-p' || echo '' )"
         parameters="$dry_run $fail_fast $prepopulate $config ${{ inputs.file }} ${{ inputs.vars }}"
         echo "::set-output name=parameters::$parameters"
+        binary="$( [[ ${{ runner.os }} == 'macOS' ]] && echo 'acsim-macos-latest' || echo 'acsim-ubuntu-latest' )"
+        echo "::set-output name=binary::$binary"
       shell: bash
-    - name: Run Actions Simulator for Linux
-      if: runner.os == 'Linux'
+    - name: Run Actions Simulator
       run: |
-        ${{ github.action_path }}/acsim-ubuntu-latest ${{ steps.config.outputs.parameters }}
-      shell: bash
-    - name: Run Actions Simulator for macOS
-      if: runner.os == 'macOS'
-      run: |
-        ${{ github.action_path }}/acsim-macos-latest ${{ steps.config.outputs.parameters }}
+        ${{ github.action_path }}/${{ steps.config.outputs.binary }} ${{ steps.config.outputs.parameters }}
       shell: bash
