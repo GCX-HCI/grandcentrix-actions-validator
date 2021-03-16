@@ -1,6 +1,6 @@
 # grandcentrix Actions Validator
 
-This action is built around https://github.com/grandcentrix/grandcentrix-actions-simulator. It allows you to check your workflow files e.g. when you edit them in a Pull Request. It checks for correct syntax and even simulates the run. Also, it is able to do a real run-through of your workflow if you want it to.
+This action is built around https://github.com/GCX-HCI/grandcentrix-actions-simulator. It allows you to check your workflow files e.g. when you edit them in a Pull Request. It checks for correct syntax and even simulates the run. Also, it is able to do a real run-through of your workflow if you want it to.
 
 # Usage
 
@@ -16,7 +16,7 @@ The following things on your runner are assumed to be installed - if not this mi
 
 <!-- start usage -->
 ```yaml
-- uses: grandcentrix/grandcentrix-actions-validator@v0.1.5
+- uses: GCX-HCI/grandcentrix-actions-validator@v0.1.5
   with:
     # Required. Path to workflow file to use
     file: ''
@@ -67,14 +67,14 @@ jobs:
           node-version: '12.x'
       - name: Check PR workflow
         id: pr
-        uses: grandcentrix/grandcentrix-actions-validator@v0.1.5
+        uses: GCX-HCI/grandcentrix-actions-validator@v0.1.5
         with:
           file: ${{ github.workspace }}/.github/workflows/pr.yml
           vars: github.actor=testuser secrets.GITHUB_TOKEN=token github.event_name=push
         continue-on-error: true
       - name: Check Release workflow
         id: release
-        uses: grandcentrix/grandcentrix-actions-validator@v0.1.5
+        uses: GCX-HCI/grandcentrix-actions-validator@v0.1.5
         with:
           file: ${{ github.workspace }}/.github/workflows/release.yml
           vars: github.actor=testuser secrets.GITHUB_TOKEN=token github.event_name=push
