@@ -1,0 +1,28 @@
+name: Update Simulator Binary
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_version:
+        description: 'Tag version of simulator release'
+        required: true
+
+jobs:
+  update_simulator_binary:
+    name: Update Simulator Binary
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Simulator Release
+        run: |
+          curl https://github.com/grandcentrix/grandcentrix-actions-simulator/releases/download/${{ github.event.inputs.tag_version }}/acsim-ubuntu-latest --output acsim-ubuntu-latest
+          chmod +x acsim-ubuntu-latest
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3.8.2
+        with:
+          branch: "update-simulator-binary-to-${{ github.event.inputs.tag_version }}"
+          base: "main"
+          commit-message: "Update simulator binary to ${{ github.event.inputs.tag_version }}"
+          title: 'Update simulator binary to ${{ github.event.inputs.tag_version }}'
+          body: |
+            Updates the simulator binary to ${{ github.event.inputs.tag_version }}
